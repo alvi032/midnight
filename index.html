@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Time Calculator</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="main.js"></script>
+    </head>
+<body>
+    <div class="container">
+        <h1>Time Calculator</h1>
+        <p>Enter time for Maghrib and Fajr prayer:</p>
+
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input type="text" id="time1" placeholder="Enter Maghrib time">
+                <label for="time1">Maghrib:</label>
+            </div>
+            <div class="col s12 m6">
+                <button class="btn waves-effect waves-light" id="time1-am" onclick="toggleAmPm('time1-am')">PM</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input type="text" id="time2" placeholder="Enter Fajr time">
+                <label for="time2">Fajr:</label>
+            </div>
+            <div class="col s12 m6">
+                <button class="btn waves-effect waves-light" id="time2-am" onclick="toggleAmPm('time2-am')">AM</button>
+            </div>
+        </div>
+
+        <button class="btn waves-effect waves-light" onclick="calculateTimeAndDisplayResult()">Calculate</button>
+
+        <p id="resultText" style="display: none;">Midnight is at: <span id="result" class="result-value"></span></p>
+    </div>
+</body>
+</html>
