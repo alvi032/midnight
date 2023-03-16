@@ -1,6 +1,34 @@
 function calculateTimeAndDisplayResult() {
     calculateTime();
     document.getElementById("resultText").style.display = "block";
+    displayTimeRemaining();
+}
+
+function displayTimeRemaining() {
+    var currentTime = new Date();
+    var resultTime = document.getElementById("result").innerHTML;
+    var resultTimeObj = new Date(currentTime.toDateString() + " " + resultTime);
+
+    if (resultTimeObj < currentTime) {
+        resultTimeObj.setDate(resultTimeObj.getDate() + 1);
+    }
+
+    var timeRemainingMs = resultTimeObj.getTime() - currentTime.getTime();
+    var timeRemaining = msToHMS(timeRemainingMs);
+
+    document.getElementById("timeRemaining").innerHTML = timeRemaining;
+    document.getElementById("timeRemainingText").style.display = "block";
+}
+
+function msToHMS(ms) {
+    var seconds = Math.floor(ms / 1000);
+    var minutes = Math.floor(seconds / 60);
+    var hours = Math.floor(minutes / 60);
+    
+    minutes %= 60;
+    seconds %= 60;
+
+    return `${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
 }
 
 function calculateTime() {
